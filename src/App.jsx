@@ -112,14 +112,14 @@ function App() {
               Frustration and a Fuzzy Picture of Progress
             </h1>
             <p className="text-xl text-white/80 max-w-4xl mx-auto mb-8">
-              You're in the gym, kettlebell in hand, but you're still not sure if you're truly moving forward. Was that set of 20 snatches faster than last week? Did you hit a new PR? Did you best your time on this last round of 500 Swings? You're left with a nagging doubt that keeps you from feeling truly confident in your gains.
+              You're in the gym, kettlebells in hand, but you're still not sure if you're truly moving forward. Was that set of 20 snatches faster than last week? Did you hit a new PR? Did you best your time on this last round of 500 Swings? You're left with a nagging doubt that keeps you from feeling truly confident in your gains.
             </p>
             
             <h2 className="text-3xl sm:text-4xl font-bold text-teal-400 mb-4">
               The Bridge to Your True Potential
             </h2>
             <p className="text-lg text-white/80 max-w-4xl mx-auto mb-8">
-              You've always known that consistency is key, but you also know that discipline without data is just guesswork. You need a system that translates your effort into undeniable progress. This is where the <strong>Kettlebell Command Center</strong> comes in. We are the bridge between where you are now—unseen progress and fragmented data—and where you want to be.
+              You've always known that consistency is key, but you also know that discipline without data is just guesswork. You need a system that translates your effort into undeniable progress. This is where the <strong>Kettlebell Command Center</strong> comes in. We are the bridge between where you are now, unseen progress and fragmented data, and where you want to be.
             </p>
             
             <h2 className="text-3xl sm:text-4xl font-bold text-teal-400 mb-4">
