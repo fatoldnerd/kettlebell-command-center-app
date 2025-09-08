@@ -109,10 +109,24 @@ function App() {
           {/* Hero Section */}
           <div className="text-center mb-12">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white text-shadow mb-4">
-              Your Ultimate Kettlebell Training Hub
+              Frustration and a Fuzzy Picture of Progress
             </h1>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto">
-              Master your kettlebell journey with our suite of specialized tracking tools.
+            <p className="text-xl text-white/80 max-w-4xl mx-auto mb-8">
+              You're in the gym, kettlebell in hand, but you're still not sure if you're truly moving forward. Was that set of 20 snatches faster than last week? Did you hit a new PR? Did you best your time on this last round of 500 Swings? You're left with a nagging doubt that keeps you from feeling truly confident in your gains.
+            </p>
+            
+            <h2 className="text-3xl sm:text-4xl font-bold text-teal-400 mb-4">
+              The Bridge to Your True Potential
+            </h2>
+            <p className="text-lg text-white/80 max-w-4xl mx-auto mb-8">
+              You've always known that consistency is key, but you also know that discipline without data is just guesswork. You need a system that translates your effort into undeniable progress. This is where the <strong>Kettlebell Command Center</strong> comes in. We are the bridge between where you are now—unseen progress and fragmented data—and where you want to be.
+            </p>
+            
+            <h2 className="text-3xl sm:text-4xl font-bold text-teal-400 mb-4">
+              Clarity, Confidence, and Unstoppable Progress
+            </h2>
+            <p className="text-lg text-white/80 max-w-4xl mx-auto mb-8">
+              Imagine this: you finish a brutal workout, but instead of uncertainty, you feel a wave of confidence. You log your session in your dedicated tracker, and instantly you see the results. Your total volume for the month has increased by 15%. You've officially crushed your previous PR. The data validates your effort, and that feeling of knowing exactly how far you've come is a powerful motivator.
             </p>
           </div>
 
@@ -158,11 +172,11 @@ function App() {
           {/* About Section */}
           <div className="mt-16">
             <div className="glass-card p-8 text-center">
-              <h2 className="text-3xl font-bold text-white mb-4">Our Mission</h2>
+              <h2 className="text-3xl font-bold text-white mb-4">Explore Our Powerful Kettlebell Trackers</h2>
               <p className="text-white/80 text-lg leading-relaxed max-w-3xl mx-auto">
-                As passionate kettlebell practitioners ourselves, we understand the dedication it takes to master this powerful tool.
-                We created these trackers to provide fellow athletes with the precise, intuitive tools needed to log progress,
-                stay motivated, and ultimately achieve their kettlebell goals.
+                Each tracker is designed to transform your kettlebell training from guesswork into precision. 
+                Whether you're conquering the 10K Swing Challenge, mastering the Armor Building Complex, 
+                or optimizing your KSK snatch sessions, we provide the tools to turn your effort into undeniable progress.
               </p>
             </div>
           </div>
