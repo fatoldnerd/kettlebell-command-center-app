@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import { getAuth, signInAnonymously } from 'firebase/auth';
 import {
   Sparkles,
   Target,
@@ -18,6 +21,9 @@ import {
 function App() {
   const [defaultApp, setDefaultApp] = useState(null);
   const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+  const [messageType, setMessageType] = useState('');
 
   // App data with updated structure for new design
   const apps = [
@@ -55,6 +61,21 @@ function App() {
     }
   ];
 
+  // Initialize Firebase
+  const initFirebase = () => {
+    try {
+      if (typeof window !== 'undefined' && window.__firebase_config && window.__app_id) {
+        const app = initializeApp(window.__firebase_config);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        return { db, auth };
+      }
+    } catch (error) {
+      console.error('Firebase initialization failed:', error);
+    }
+    return null;
+  };
+
   // Load default app from localStorage on component mount
   useEffect(() => {
     try {
@@ -90,10 +111,50 @@ function App() {
   };
 
   // Handle newsletter signup
-  const handleNewsletterSubmit = (e) => {
+  const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
-    alert('Subscribed!');
-    setEmail('');
+    
+    // Clear any previous messages
+    setSubmitMessage('');
+    setMessageType('');
+    
+    // Validate email
+    if (!email || !email.includes('@')) {
+      setSubmitMessage('Please enter a valid email address');
+      setMessageType('error');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const firebase = initFirebase();
+    
+    if (!firebase) {
+      setSubmitMessage('Service temporarily unavailable');
+      setMessageType('error');
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // Sign in anonymously to get write permissions
+      await signInAnonymously(firebase.auth);
+      
+      // Add email to Firestore collection (using email as document ID to prevent duplicates)
+      await setDoc(doc(firebase.db, 'subscribers', email), {
+        email: email,
+        timestamp: new Date().toISOString(),
+      });
+
+      setSubmitMessage('Thanks for subscribing! You are all set.');
+      setMessageType('success');
+      setEmail('');
+    } catch (error) {
+      setSubmitMessage('There was an error. Please try again later.');
+      setMessageType('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -377,22 +438,31 @@ function App() {
                 </div>
                 <p className="mt-2 text-sm text-neutral-300">Weekly flows, density blocks, and templates you can import anywhere.</p>
               </div>
-              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3">
-                <input 
-                  type="email" 
-                  placeholder="you@domain.com" 
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full rounded-md bg-neutral-950/60 ring-1 ring-white/10 px-3 py-2 text-sm placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
-                />
-                <button 
-                  type="submit" 
-                  className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium bg-emerald-500 text-neutral-950 hover:bg-emerald-400 transition"
-                >
-                  <Mail className="w-4 h-4" />
-                  Subscribe
-                </button>
-              </form>
+              <div className="space-y-3">
+                <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3">
+                  <input 
+                    type="email" 
+                    placeholder="you@domain.com" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={isSubmitting}
+                    className="w-full rounded-md bg-neutral-950/60 ring-1 ring-white/10 px-3 py-2 text-sm placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                  />
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium bg-emerald-500 text-neutral-950 hover:bg-emerald-400 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <Mail className="w-4 h-4" />
+                    {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+                  </button>
+                </form>
+                {submitMessage && (
+                  <p className={`text-sm ${messageType === 'success' ? 'text-emerald-400' : 'text-red-400'}`}>
+                    {submitMessage}
+                  </p>
+                )}
+              </div>
             </div>
             <div className="mt-6 h-px bg-white/10"></div>
             <div className="mt-6 flex flex-col md:flex-row items-center justify-between gap-4">
