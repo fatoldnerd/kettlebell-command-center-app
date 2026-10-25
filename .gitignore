@@ -31,3 +31,5 @@ firebase-config.js
 *.njsproj
 *.sln
 *.sw?
+.sites-runtime/
+outputs/
