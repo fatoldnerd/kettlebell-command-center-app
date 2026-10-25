@@ -6,3 +6,24 @@
 @media(max-width:380px){.hero-content h1{font-size:46px}.hero-content{padding-left:20px;padding-right:20px}.hub-quick{font-size:9px}.hub .mobile-brand{font-size:17px}.app-tile{grid-template-columns:34% 66%}.tile-content{padding-left:15px;padding-right:15px}.tile-content h3{font-size:18px}}
 
 .hub-bell{color:#ff8754;flex-shrink:0}
+
+/* The original photograph stays still while the foreground scrolls over it. */
+.hub{position:relative;isolation:isolate;background:transparent}
+.hub-background{position:fixed;inset:0;z-index:-1;pointer-events:none;background:#11170f;overflow:hidden}
+.hub-background>img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;filter:saturate(.45);opacity:.64}
+.hub-background-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,19,10,.7),rgba(12,19,10,.32) 60%,rgba(12,19,10,.48)),linear-gradient(180deg,rgba(10,16,9,.12),rgba(10,16,9,.45) 70%,rgba(10,16,9,.65))}
+.hub .workspace{position:relative;background:transparent}
+.hub .sidebar{background:rgba(17,24,14,.88);backdrop-filter:blur(12px)}
+.hub .topbar{background:rgba(17,24,14,.65);backdrop-filter:blur(16px)}
+.hub-hero{background:transparent;border:0;border-radius:0;min-height:440px;overflow:visible}
+.hero-content{padding:42px 0 36px;max-width:80%}
+.hero-content h1{text-shadow:0 3px 35px #0b100ac0}
+.hero-content p{color:#d3dcc7;text-shadow:0 2px 14px #10170f}
+.hero-foot{color:#ccd7bc}
+.hub-section-title p,.favorite-help,.hub-philosophy p,.hub-faq details p{color:#c5d0b7}
+.app-tile{background:linear-gradient(140deg,rgba(32,41,26,.93),rgba(24,31,20,.92));backdrop-filter:blur(12px)}
+.hub-philosophy{background:rgba(16,23,13,.54);padding:30px 22px;border-radius:10px}
+.hub-faq{background:rgba(16,23,13,.62);padding:26px 22px;border-radius:10px}
+@media(min-width:1550px){.hero-content{padding:55px 0 45px}.hub-hero{min-height:480px}}
+@media(max-width:760px){.hub-background>img{object-position:43% 30%;opacity:.61}.hub-background-shade{background:linear-gradient(180deg,rgba(10,17,9,.4),rgba(10,17,9,.58)),linear-gradient(90deg,rgba(10,17,9,.22),transparent)}.hub-hero{min-height:460px;display:flex;align-items:center}.hero-content{padding:40px 5px 45px;max-width:100%}.hero-content h1{font-size:58px}.hub-philosophy,.hub-faq{padding:25px 18px}.hub .topbar{background:rgba(17,24,14,.72)}}
+@media(max-width:380px){.hero-content h1{font-size:50px}}
