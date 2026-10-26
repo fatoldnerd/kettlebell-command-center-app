@@ -33,3 +33,6 @@ firebase-config.js
 *.sw?
 .sites-runtime/
 outputs/
+
+# Local Firebase Hosting upload cache
+.firebase/
