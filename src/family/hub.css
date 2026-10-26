@@ -27,3 +27,5 @@
 @media(min-width:1550px){.hero-content{padding:55px 0 45px}.hub-hero{min-height:480px}}
 @media(max-width:760px){.hub-background>img{object-position:43% 30%;opacity:.61}.hub-background-shade{background:linear-gradient(180deg,rgba(10,17,9,.4),rgba(10,17,9,.58)),linear-gradient(90deg,rgba(10,17,9,.22),transparent)}.hub-hero{min-height:460px;display:flex;align-items:center}.hero-content{padding:40px 5px 45px;max-width:100%}.hero-content h1{font-size:58px}.hub-philosophy,.hub-faq{padding:25px 18px}.hub .topbar{background:rgba(17,24,14,.72)}}
 @media(max-width:380px){.hero-content h1{font-size:50px}}
+
+.tile-image img.training-photo{object-position:50% 0}
